@@ -1,0 +1,43 @@
+@startuml
+
+class ObjectPool {
+    - {static} instance: objectPool
+    - {static} lockObject :Object
+    - maxSize: Int
+    - _available: Log[]
+    - _inUse: Log[]
+    ----
+    +getLog(): Log
+    +realeseLog(item: Log)
+    -{static} objectPool getInstance()
+}
+
+class ThreadClient {
+    - instance: ObjectPool
+    ---
+        +Thread1()
+        +Thread2()
+        +Thread3()
+        +Thread4()
+        +Thread5()
+        +Thread6()
+        +Thread7()
+        +Thread8()
+        +Thread9()
+        +Thread10()
+        +Thread11()
+        +Thread12()
+        +Thread13()
+        +Thread14()
+        +Thread15()
+        +runInstance()
+
+}
+
+class Log {
+    - LogType: String
+}
+
+ObjectPool "1" -down-> "*" Log
+ThreadClient -down-> ObjectPool
+@enduml
